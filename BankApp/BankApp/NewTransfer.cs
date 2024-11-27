@@ -56,4 +56,6 @@ namespace BankApp
             }
         }
     }
+
+    //Komentarz zeby spawdzic dzialanie komita
 }
