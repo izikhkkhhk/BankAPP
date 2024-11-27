@@ -12,6 +12,7 @@ using System.Windows.Forms;
 
 namespace BankApp
 {
+       //KOmtarz popierdolony
     public partial class Login : Form
     {
         //referencja od głównego okna aplikacji
@@ -21,7 +22,7 @@ namespace BankApp
             MainForm = p;
             InitializeComponent();
         }
-
+        //Kometrz dla commmita
         private void LoginButtonPressed(object sender, EventArgs e)
         {
             string login = loginTextBox.Text;
