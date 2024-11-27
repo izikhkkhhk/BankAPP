@@ -25,7 +25,9 @@ namespace BankApp
             HttpResponseMessage response = client.PostAsJsonAsync(url, data).Result;
             //wyci¹gnij z odpowiedzi dane w formacie JSON
             string json = response.Content.ReadAsStringAsync().Result;
-            Account account = JsonConvert.DeserializeObject<Account>(json);
+            AccountDetailsResponse accountDetailsResponse =
+            JsonConvert.DeserializeObject<AccountDetailsResponse>(json);
+            Account account = accountDetailsResponse.account;
             //wypisz dane na formularzu
             AccountNameTextBox.Text = account.name;
             AccountNumberTextBox.Text = account.accountNo.ToString();
