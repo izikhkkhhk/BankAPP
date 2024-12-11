@@ -12,7 +12,6 @@ using System.Windows.Forms;
 
 namespace BankApp
 {
-       //KOmtarz popierdolony
     public partial class Login : Form
     {
         //referencja od głównego okna aplikacji
@@ -22,7 +21,11 @@ namespace BankApp
             MainForm = p;
             InitializeComponent();
         }
-        //Kometrz dla commmita
+        /// <summary>
+        /// Method to handle login button click - sends login and password to API
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LoginButtonPressed(object sender, EventArgs e)
         {
             string login = loginTextBox.Text;
@@ -33,11 +36,11 @@ namespace BankApp
             //adres API
             string url = "http://localhost/bankAPI/login/";
             //stworz dane do wysłania
-            //stworz "w powietrzu" obiekt zawierający login i hasło
-            var data = new { login = login, password = password };
+            LoginRequest data = new LoginRequest(login, password);
+
             //zakoduj jako json i wyślij postem
             //odbierz odpowiedź z API jako HttpResponseMessage
-            HttpResponseMessage response = 
+            HttpResponseMessage response =
                 client.PostAsJsonAsync(url, data).Result;
             //wyciągnij z odpowiedzi dane w formacie JSON
             string json = response.Content.ReadAsStringAsync().Result;
